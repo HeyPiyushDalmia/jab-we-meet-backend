@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const users = require("../controllers/users");
+const {signupSchema} = require("../validators/user-validator");
+const {loginSchema} = require("../validators/user-validator");
+const validate = require("../middlewares/validate-middlware");
 
 router.get("/",(req,res)=> {
     res.status(200).send("welcome to user router");
@@ -14,6 +17,10 @@ router.get("/",(req,res)=> {
 //     .send("Welcome to user router 2")
 // })
 
-router.route('/register').post(users.register);
+router.route('/register')
+.post(validate(signupSchema), users.register);
+
+router.route('/login').post( users.login);
+
 
 module.exports = router;
