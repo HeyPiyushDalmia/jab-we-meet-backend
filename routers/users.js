@@ -4,7 +4,7 @@ const users = require("../controllers/users");
 const {signupSchema} = require("../validators/user-validator");
 const {loginSchema} = require("../validators/user-validator");
 const validate = require("../middlewares/validate-middlware");
-
+const userMiddleware = require("../middlewares/user-middleware");
 router.get("/",(req,res)=> {
     res.status(200).send("welcome to user router");
 })
@@ -22,5 +22,6 @@ router.route('/register')
 
 router.route('/login').post( users.login);
 
+router .route('/user').get(userMiddleware, users.user);
 
 module.exports = router;
