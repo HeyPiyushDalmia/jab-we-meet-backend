@@ -5,11 +5,14 @@ const createeventSchema= new mongoose.Schema({
         type:String,
         require:true
     },
-    eventDescription:{
+    description:{
         type:String,
         require:true
     },
-    targetAudience:{
+    audience:{
+        type:String
+    },
+    type:{
         type:String
     },
     audienceNum:{

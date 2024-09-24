@@ -50,6 +50,8 @@ try{
     return jwt.sign({
       userId: this.id.toString(),
       email: this.email,
+      firstname: this.firstname,
+      lastname: this.lastname,
     },
   process.env.JWT_SECRET_KEY, {
     expiresIn: "30d", 
