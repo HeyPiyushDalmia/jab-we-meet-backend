@@ -6,7 +6,7 @@ const router = require("./routers/users");
 const contactRoute = require("./routers/contact");
 const connectDb = require("./utils/db");
 const errorMiddleware = require('./middlewares/error-middleware');
-const createRoute=require("./routers/createevent")
+const createEventRoute = require("./routers/createevent")
 
 //lets tackle cors
 
@@ -24,7 +24,7 @@ app.use(cors());
 
 app.use("/api/users", router);
 app.use("/api/form",contactRoute);
-app.use("/api/event",createRoute);
+app.use("/api/event",createEventRoute);
 app.get("/",(req,res)=>{
     res.status(200).send("Welcome to Mern");
 });

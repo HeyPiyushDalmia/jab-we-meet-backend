@@ -10,55 +10,81 @@ const createeventSchema= new mongoose.Schema({
         require:true
     },
     audience:{
-        type:String
+        type:String,
+        require:true
     },
     type:{
-        type:String
+        type:String,
+        enum: ['In Person', 'Virtual'],
+        require:true
     },
-    audienceNum:{
-        type:Number
+    attendees:{
+        type:Number,
+        require:true
     },
     ticketPrice:{
-        type:Number
+        type:Number,
+        require:true
+    },
+    tech:{
+        type:String,
+        enum: ['Yes', 'No','Not Sure'],
+        require:true
     },
     agenda:{
         type:String,
+        require:true
     },
-    hostName:{
-        type:String
+    hostname:{
+        type:String,
+        require:true
     },
-    contactEmail:{
-        type:String
+    eventdate:{
+        type:Date,
+        require:true,
+    },
+    email:{
+        type:String,
+        require:true
     },
     country:{
-        type:String
+        type:String,
+        require:true
     },
-    streetAddress:{
-        type:String
+    address:{
+        type:String,
+        require:true
     },
     city:{
-        type:String
+        type:String,
+        require:true
     },
     state:{
-        type:String
+        type:String,
+        require:true
     },
-    postalCode:{
-        type:Number
+    postal:{
+        type:Number,
+        require:true
     },
     twitter:{
-        type:String
+        type:String,
+        default:'Unknown',
     },
     linkedin:{
-        type:String
+        type:String,
+        default:'Unknown',
     },
     website:{
-        type:String
+        type:String,
+        default:'Unknown',
     },
     instagram:{
-        type:String
+        type:String,
+        default:'Unknown',
     }
 });
 
-const Createevent=new mongoose.model("Createevent",createeventSchema);
+const Createevent =new mongoose.model("Createevent",createeventSchema);
 
-module.exports=Createevent;
+module.exports= Createevent;

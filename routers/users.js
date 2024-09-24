@@ -20,7 +20,7 @@ router.get("/",(req,res)=> {
 router.route('/register')
 .post(validate(signupSchema), users.register);
 
-router.route('/login').post( users.login);
+router.route('/login').post(users.login);
 
 router .route('/user').get(userMiddleware, users.user);
 
