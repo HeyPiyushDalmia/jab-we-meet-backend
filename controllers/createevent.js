@@ -5,18 +5,26 @@ const create=async (req,res)=>{
         console.log(req.body);
         const{eventname,description,audience,type,attendees,ticketPrice,tech,agenda,hostname,eventdate,email,country,address,city,state,postal,twitter,linkedin, website,instagram}=req.body;
 
-        const userCreated=new Createevent({eventname,description,audience,type,attendees,ticketPrice,tech,agenda,hostname,eventdate,email,country,address,city,state,postal,twitter,linkedin, website,instagram});
-        await userCreated.save();
+        const eventCreated=new Createevent({eventname,description,audience,type,attendees,ticketPrice,tech,agenda,hostname,eventdate,email,country,address,city,state,postal,twitter,linkedin, website,instagram});
+        await eventCreated.save();
 
         res.status(201).send({msg:"event created succesfully"})
     }
     catch(error)
     {
-        res.status(400).send({msg:"Event is not created due to some technical issues. Please try again later"})
+        res.status(400).send({msg:"Event is not created due to some technical issues. Please try again later",error})
     }
 }
 const rep=async(req,res)=>{
-    const data=await Createevent.find({});
-    res.status(200).json({data});
+    try {
+         const response=await Createevent.find({});
+         if (!response) {
+            res.status(404).json({msg:"No Events found"});
+            return;
+         }
+    res.status(200).json({response});
+    } catch (error) {
+        console.log(`events : ${error}`);
+    }
 };
-module.exports={create,rep};
+module.exports= {create,rep};

@@ -16,6 +16,7 @@ const createeventSchema= new mongoose.Schema({
     type:{
         type:String,
         enum: ['In Person', 'Virtual'],
+        default:'InPerson',
         require:true
     },
     attendees:{
@@ -29,6 +30,7 @@ const createeventSchema= new mongoose.Schema({
     tech:{
         type:String,
         enum: ['Yes', 'No','Not Sure'],
+        default:'Yes',
         require:true
     },
     agenda:{
@@ -39,14 +41,15 @@ const createeventSchema= new mongoose.Schema({
         type:String,
         require:true
     },
-    eventdate:{
-        type:Date,
-        require:true,
-    },
     email:{
         type:String,
         require:true
     },
+    eventdate:{
+        type:String,
+        require:true,
+    },
+  
     country:{
         type:String,
         require:true
